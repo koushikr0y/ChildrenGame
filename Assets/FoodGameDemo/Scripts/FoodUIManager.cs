@@ -43,32 +43,14 @@ public class FoodUIManager : MonoBehaviour
 
         if (clampValue >= 178)
         {
-            LeanTween.scale(gameOver, Vector3.one, 1f).setEase(LeanTweenType.easeInOutSine).setOnComplete(() =>
+            LeanTween.scale(gameOver, Vector3.one, .6f).setEase(LeanTweenType.easeInOutSine).setOnUpdate((float val) =>
             {
-                LeanTween.sequence().append(() =>
-                {
-                    LeanTween.scale(playAgainButton.gameObject, Vector3.one, 1f).setEase(LeanTweenType.easeOutQuad)
-                    .setOnComplete(() =>
-                    {
-                        //LeanTween.moveLocalX(playAgainButton.gameObject, playAgainButton.transform.localPosition.x - 20f, 0.25f)
-                        //    .setEase(LeanTweenType.easeOutQuad)
-                        //    .setOnComplete(() =>
-                        //    {
-                        //        LeanTween.moveLocalX(playAgainButton.gameObject, playAgainButton.transform.localPosition.x + 20f, 0.25f)
-                        //            .setEase(LeanTweenType.easeOutQuad);
-                        //    });
-                    });
-                })
-                .append(() =>
-                {
-                    LeanTween.scale(TextGameOver.gameObject, Vector3.one, 1f).setEase(LeanTweenType.easeOutQuad)
-                    .setOnComplete(() =>
-                    {
-                        LeanTween.scale(ui1.gameObject, Vector3.one, .7f).setLoopPingPong();
-                        LeanTween.scale(ui2.gameObject, Vector3.one, .7f).setLoopPingPong();
-                    });
-                });
+                    LeanTween.scale(playAgainButton.gameObject, Vector3.one, .5f).setEase(LeanTweenType.easeOutQuad);
+                    LeanTween.scale(TextGameOver.gameObject, Vector3.one, .5f).setEase(LeanTweenType.easeOutQuad);
             });
+
+            LeanTween.scale(ui1.gameObject, Vector3.one, .5f).setLoopPingPong();
+            LeanTween.scale(ui2.gameObject, Vector3.one, .5f).setLoopPingPong(99);
 
             //LeanTween.scale(meterbox, new Vector3(1.2f, 1.2f, 1.2f), 1f).setEase(LeanTweenType.easeOutQuad);
             //LeanTween.move(meterbox, newPos, 1f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>

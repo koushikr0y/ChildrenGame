@@ -71,9 +71,9 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(1.1f);
         }
         countDownText.text = "GO";
-        yield return new WaitForSeconds(1f);
-
+        yield return new WaitForSeconds(.5f);
         countDownText.enabled = false;
+
         GameManager.Instance.GameRunningEvent();
     }
 
@@ -117,7 +117,7 @@ public class UIManager : MonoBehaviour
     {
         isTimerRunning = false;
         countDownText.gameObject.SetActive(false);
-        LeanTween.scale(gameOverPanel, Vector3.one, 1f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+        LeanTween.scale(gameOverPanel, Vector3.one, .5f).setEase(LeanTweenType.easeOutQuad).setOnUpdate((float val) =>
         {
             LeanTween.sequence().append(() =>
             {
