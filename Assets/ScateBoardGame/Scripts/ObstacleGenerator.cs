@@ -9,7 +9,7 @@ public class ObstacleGenerator : MonoBehaviour
     private int numberOfObstaclesSpawned;
     [SerializeField] private int totalObstaclesToSpawn = 3;
     private bool isGameOver = false;
-    Vector3 pos = new Vector3(25, -3, 0);
+    Vector3 pos = new Vector3(30, -3, 0);
 
     [SerializeField] private float timeBetweenObstaclesSpawn = 5f;
 
@@ -25,13 +25,11 @@ public class ObstacleGenerator : MonoBehaviour
         if (!isGameOver && GameManager.Instance.gameState == GameManager.GameState.GAMERUNNING)
         {
             //Vector3 position = new Vector3(generationPoint.transform.position.x, generationPoint.transform.position.y, 0);
-            
-            //Debug.Log("Posi " + position);
             if (numberOfObstaclesSpawned < totalObstaclesToSpawn)
             {
                 //Instantiate(obstacles[0], generationPoint.transform.position,Quaternion.identity);
 
-                Instantiate(obstacles[0], pos,Quaternion.identity /*generationPoint.transform*/);
+                Instantiate(obstacles[0], pos,Quaternion.identity);
                 numberOfObstaclesSpawned++;
                 pos = new Vector3(pos.x + 40f, pos.y, pos.z);
             }

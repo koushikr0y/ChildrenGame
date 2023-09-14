@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public PlayerController thePlayer;
+    public Transform thePlayer;
+
     private Vector3 lastPlayerPosition;
+    private Vector3 velocity = Vector3.zero;
+    
     private float distanceToMove;
-    public float transitionSpeed = 2;
+    private float smoothTime = .2f;
+
     void Start()
     {
-        thePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        lastPlayerPosition = thePlayer.transform.position;
+        lastPlayerPosition = thePlayer.position;
     }
 
     private void LateUpdate()
@@ -19,5 +20,10 @@ public class CameraController : MonoBehaviour
         distanceToMove = thePlayer.transform.position.x - lastPlayerPosition.x;
         transform.position = new Vector3(transform.position.x + distanceToMove, transform.position.y, transform.position.z);
         lastPlayerPosition = thePlayer.transform.position;
+
+        //distanceToMove = thePlayer.transform.position.x - lastPlayerPosition.x;
+        //Vector3 targetPosition = new Vector3(transform.position.x + distanceToMove, transform.position.y, transform.position.z);
+        //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        //lastPlayerPosition = thePlayer.transform.position;
     }
 }

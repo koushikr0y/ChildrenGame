@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Parallax : MonoBehaviour
@@ -15,20 +13,12 @@ public class Parallax : MonoBehaviour
         mat = GetComponent<Renderer>().material;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(GameManager.Instance.gameState == GameManager.GameState.GAMERUNNING)
         {
-            if(PlayerController.Instance.movementSpeed < 1f)
-            {
-                //distance -= Time.deltaTime * speed;
-                //mat.SetTextureOffset("_MainTex",Vector2.right * distance);
-            }
-            else
-            {
-                distance += Time.deltaTime * speed;
-                mat.SetTextureOffset("_MainTex", Vector2.right * distance);
-            }
+            distance += Time.deltaTime * speed;
+            mat.SetTextureOffset("_MainTex", Vector2.right * distance);
         }
         
     }

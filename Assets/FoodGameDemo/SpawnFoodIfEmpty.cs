@@ -25,4 +25,9 @@ public class SpawnFoodIfEmpty : MonoBehaviour
             hasSpawnedChild = false;
         }
     }
+
+    private void OnDisable()
+    {
+        
+    }
 }

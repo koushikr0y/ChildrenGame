@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 60;
         _state = GameState.WAITINGTOSTART;
         GameOverAction += GameOverEvent;
     }

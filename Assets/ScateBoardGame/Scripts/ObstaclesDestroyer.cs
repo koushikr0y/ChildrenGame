@@ -6,7 +6,7 @@ public class ObstaclesDestroyer : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Obstacles") || collision.CompareTag("Ground"))
+        if (collision.CompareTag("Obstacle"))
         {
             Destroy(collision.gameObject);
         }

@@ -48,10 +48,12 @@ public class DraggableFood : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
         else
         {
-            transform.position = originalPos;
-            transform.SetParent(originalParent, true);
-            LeanTween.scale(gameObject, originalScale, .8f).setEase(LeanTweenType.easeOutQuad);
+            //transform.position = originalPos;
+            //transform.SetParent(originalParent, true);
+            //LeanTween.scale(gameObject, originalScale, .8f).setEase(LeanTweenType.easeOutQuad);
 
+            Destroy(gameObject);
+            FoodContainer.Instane.spawnNewFood?.Invoke();
         }
     }
 

@@ -3,51 +3,17 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
-    //public float minDistanceToShowTutorial = 2.0f; // Adjust this distance as needed.
-    //public GameObject tutorialUI;
-    //private bool tutorialShown = false;
-
-    //private void Start()
-    //{
-    //    tutorialUI.SetActive(false);
-    //}
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("Obstacle") && !tutorialShown)
-    //    {
-    //        float distance = Vector2.Distance(transform.position, other.transform.position);
-
-    //        if (distance <= minDistanceToShowTutorial)
-    //        {
-    //            ShowTutorial();
-    //        }
-    //    }
-    //}
-
-    //private void ShowTutorial()
-    //{
-    //    tutorialShown = true;
-    //    Time.timeScale = 0f;
-
-    //    tutorialUI.SetActive(true);
-    //    Debug.Log("Tutorial showing");
-    //}
-
-    //private void CloseTutorial()
-    //{
-    //    Time.timeScale = 1f;
-    //    tutorialUI.SetActive(false);
-    //}
+    private PlayerController playerController;
 
     public GameObject tutorialUI;
     public float obstacleDetectionDistance = 5f;
+    
     [SerializeField] private bool showingTutorial = false;
-    private PlayerController playerController;
     private bool hasShownTutorial = false;
     private bool detectedFirstObstacle = false;
-
     private bool isTimeScaleTransitioning = false;
+    private bool canJump = false;
+
     private float timeScaleTransitionDuration = .9f;
 
     private void Start()
@@ -71,17 +37,21 @@ public class Tutorial : MonoBehaviour
             {
                 ShowTutorialUI();
                 detectedFirstObstacle = true;
+                canJump = true;
+                playerController.canMove = false;
             }
         }
         else if (showingTutorial)
         {
-            if (Input.touchCount > 0)
+            if (canJump && Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
                 if (touch.phase == TouchPhase.Began && touch.position.y > touch.deltaPosition.y)
                 {
                     HideTutorialUI();
                     hasShownTutorial = true;
+                    canJump = false;                                                
+                    playerController.canMove = true;
                 }
             }
         }
@@ -101,7 +71,9 @@ public class Tutorial : MonoBehaviour
         }
 
         isTimeScaleTransitioning = true;
-        StartCoroutine(SmoothlyIncreaseTimeScale());
+        Time.timeScale = 1f;
+        tutorialUI.SetActive(false);
+        //StartCoroutine(SmoothlyIncreaseTimeScale());
     }
 
     private IEnumerator SmoothlyIncreaseTimeScale()

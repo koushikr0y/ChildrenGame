@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool _isGrounded;
     [SerializeField] private bool _hasJumped;
     private bool isJumping = false;
+    public bool canMove = false;
 
     public float movementSpeed = 0f;
     private float maxMovementSpeed = 6.3f;
@@ -69,11 +70,14 @@ public class PlayerController : MonoBehaviour
             {
                 CheckGround();
                 _rb.velocity = new Vector2(movementSpeed, _rb.velocity.y);
+                if (canMove)
+                {
                 if (jumping() && _isGrounded && ((playerState == PlayerState.Running) || (playerState == PlayerState.Dragging)))
                 {
                     isJumping = true;
                     _animator.SetBool(IS_JUMP, true);
                     playerState = PlayerState.Jumping;
+                }
                 }
             }
         }
@@ -102,24 +106,6 @@ public class PlayerController : MonoBehaviour
 
     private bool jumping()
     {
-        #region OLD
-        //bool isJumping = false;
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    isJumping = true;
-        //}
-
-        //if (Input.touchCount > 0)
-        //{
-        //    Touch myTouch = Input.touches[0];
-        //    if (myTouch.phase == TouchPhase.Began && myTouch.deltaPosition.y > 0)
-        //    {
-        //        isJumping = true;
-        //    }
-        //}
-        //return isJumping;
-        #endregion
         return Input.GetKeyDown(KeyCode.Space) || (Input.touchCount > 0 && (Input.touches[0].phase == TouchPhase.Began /*&& Input.touches[0].deltaPosition.y > 0*/));
     }
 
