@@ -7,9 +7,9 @@ public class ObstacleGenerator : MonoBehaviour
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private GameObject generationPoint;
     private int numberOfObstaclesSpawned;
-    [SerializeField] private int totalObstaclesToSpawn = 3;
+    [SerializeField] private int totalObstaclesToSpawn = 10;
     private bool isGameOver = false;
-    Vector3 pos = new Vector3(30, -3, 0);
+    Vector3 pos = new(30, -3, 0);
 
     [SerializeField] private float timeBetweenObstaclesSpawn = 5f;
 

@@ -1,5 +1,14 @@
 using UnityEngine;
 
+/// <summary>
+/// sky background = .01
+/// building = .03
+/// small tree = .13
+/// road tree = .065
+/// tree = /045
+/// 
+/// </summary>
+
 public class Parallax : MonoBehaviour
 {
     Material mat;

@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _groundCheckTransform;
     [SerializeField] private LayerMask _groundLayer;
 
-    [SerializeField] private float _jumpForce = .05f;
-    [SerializeField] private float _forwardJumpForce = 2.5f;
+    // [SerializeField] private float _jumpForce = .05f;
+    // [SerializeField] private float _forwardJumpForce = 2.5f;
     [SerializeField] private float _groundRadius = .5f;
 
     public PlayerState playerState;
@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
     public bool canMove = false;
 
     public float movementSpeed = 0f;
-    private float maxMovementSpeed = 6.3f;
-    private float jumpTime = 0f;
-    [SerializeField] private float jumpAnimationDuration = .01f;
+    private readonly float maxMovementSpeed = 7f;
+    // private float jumpTime = 0f;
+    // [SerializeField] private float jumpAnimationDuration = .01f;
 
     private Vector3 initialPosition;
 
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
             _animator.SetFloat(SPEED, movementSpeed);
 
             float distanceTraveled = transform.position.x - initialPosition.x;
-            float maxDistance = 300f;
+            float maxDistance = 350f;
             float sliderValue = Mathf.Clamp01(distanceTraveled / maxDistance);
             UIManager.Instance.UpdateDistanceSlider(sliderValue);
 

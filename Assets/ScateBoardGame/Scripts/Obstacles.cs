@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+// using System.Collections;
+// using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacles : MonoBehaviour
 {
     private void Start()
     {
-        Invoke("DestroyIfNotUsed", 30f);
+        // Invoke("DestroyIfNotUsed", 30f);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

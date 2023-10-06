@@ -1506,7 +1506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0844ac6852c33446b49aa86b8c9f31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.03
+  speed: 0.05
 --- !u!23 &813584170
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2169,7 +2169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0844ac6852c33446b49aa86b8c9f31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.045
+  speed: 0.05
 --- !u!23 &968366306
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3447,7 +3447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0844ac6852c33446b49aa86b8c9f31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.13
+  speed: 0.2
 --- !u!23 &1669448635
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3714,15 +3714,12 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  _jumpForce: 10
-  _forwardJumpForce: 2
   _groundRadius: 0.2
   playerState: 0
   _isGrounded: 0
   _hasJumped: 0
   canMove: 0
   movementSpeed: 0
-  jumpAnimationDuration: 0.2
 --- !u!61 &1927596110
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3903,7 +3900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0844ac6852c33446b49aa86b8c9f31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.065
+  speed: 0.075
 --- !u!23 &2032676206
 MeshRenderer:
   m_ObjectHideFlags: 0

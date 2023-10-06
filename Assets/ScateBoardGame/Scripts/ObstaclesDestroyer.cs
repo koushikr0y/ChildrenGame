@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstaclesDestroyer : MonoBehaviour
@@ -8,7 +6,8 @@ public class ObstaclesDestroyer : MonoBehaviour
     {
         if (collision.CompareTag("Obstacle"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.layer = LayerMask.NameToLayer("obstacle");
+            Destroy(this.transform.parent.gameObject);
         }
     }
 }
